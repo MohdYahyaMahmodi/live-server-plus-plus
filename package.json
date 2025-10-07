@@ -2,7 +2,7 @@
   "name": "live-server-plus-plus",
   "displayName": "Live Server++",
   "description": "Live development server with real-time reload as you type, CSS hot-reload, and browser console integration",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "MohdMahmodi",
   "author": {
     "name": "Mohd Mahmodi",
