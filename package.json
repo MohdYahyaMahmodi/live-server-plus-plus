@@ -1,0 +1,140 @@
+{
+  "name": "live-server-plus-plus",
+  "displayName": "Live Server++",
+  "description": "Live development server with real-time reload as you type, CSS hot-reload, and browser console integration",
+  "version": "1.0.0",
+  "publisher": "MohdMahmodi",
+  "author": {
+    "name": "Mohd Mahmodi",
+    "url": "https://github.com/MohdYahyaMahmodi"
+  },
+  "license": "MIT",
+  "icon": "assets/icon.png",
+  "galleryBanner": {
+    "color": "#667eea",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MohdYahyaMahmodi/live-server-plus-plus"
+  },
+  "bugs": {
+    "url": "https://github.com/MohdYahyaMahmodi/live-server-plus-plus/issues"
+  },
+  "homepage": "https://github.com/MohdYahyaMahmodi/live-server-plus-plus#readme",
+  "keywords": [
+    "live server",
+    "live reload",
+    "hot reload",
+    "development server",
+    "web development",
+    "html",
+    "css",
+    "javascript",
+    "auto reload",
+    "browser sync",
+    "dev server"
+  ],
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other",
+    "Testing",
+    "Debuggers"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "liveServerPlusPlus.start",
+        "title": "Open with Live Server++",
+        "category": "Live Server++"
+      },
+      {
+        "command": "liveServerPlusPlus.stop",
+        "title": "Stop Live Server++",
+        "category": "Live Server++"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "when": "resourceLangId == html",
+          "command": "liveServerPlusPlus.start",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "when": "resourceLangId == html",
+          "command": "liveServerPlusPlus.start",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Live Server++",
+      "properties": {
+        "liveServerPlusPlus.port": {
+          "type": "number",
+          "default": 3000,
+          "description": "Default port for the server"
+        },
+        "liveServerPlusPlus.browser": {
+          "type": "string",
+          "default": "default",
+          "enum": [
+            "default",
+            "chrome",
+            "firefox",
+            "edge"
+          ],
+          "description": "Browser to open"
+        },
+        "liveServerPlusPlus.autoReloadDelay": {
+          "type": "number",
+          "default": 100,
+          "description": "Delay in milliseconds before auto-reload triggers (as you type)"
+        },
+        "liveServerPlusPlus.enableCORS": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable CORS headers for API testing"
+        },
+        "liveServerPlusPlus.showConsoleLog": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show browser console logs in VS Code output"
+        },
+        "liveServerPlusPlus.verboseLogging": {
+          "type": "boolean",
+          "default": false,
+          "description": "Show detailed logging (connections, file changes, reloads)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "lint": "eslint src --ext ts",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.80.0",
+    "@types/ws": "^8.5.10",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "typescript": "^5.0.0",
+    "@vscode/vsce": "^2.22.0"
+  },
+  "dependencies": {
+    "ws": "^8.16.0"
+  }
+}
