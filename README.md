@@ -234,6 +234,6 @@ Keep it off for cleaner output:
 
 ---
 
-**Made with 💜 by [Mohd Mahmodi](https://github.com/MohdYahyaMahmodi)**
+**Made with ❤️ by [Mohd Mahmodi](https://github.com/MohdYahyaMahmodi)**
 
 If you find this extension helpful, please ⭐ star the repo and leave a review!
