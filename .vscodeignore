@@ -1,3 +1,4 @@
+cat > .vscodeignore << 'EOF'
 .vscode/**
 .vscode-test/**
 src/**
@@ -8,6 +9,12 @@ vsc-extension-quickstart.md
 **/.eslintrc.json
 **/*.map
 **/*.ts
-node_modules/**
+.git/**
 .github/**
+*.vsix
+.DS_Store
 CONTRIBUTING.md
+CHANGELOG.md
+.gitattributes
+index.html
+EOF
