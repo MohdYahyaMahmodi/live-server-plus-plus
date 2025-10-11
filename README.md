@@ -1,4 +1,4 @@
-# Live Server++ (Version 1.1.0)
+# Live Server++ (Version 1.1.1)
 
 [![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/mohdmahmodi.live-server-plus-plus?style=for-the-badge&logo=visual-studio-code&logoColor=white)](https://marketplace.visualstudio.com/items?itemName=mohdmahmodi.live-server-plus-plus)
 [![Downloads](https://img.shields.io/visual-studio-marketplace/d/mohdmahmodi.live-server-plus-plus?style=for-the-badge)](https://marketplace.visualstudio.com/items?itemName=mohdmahmodi.live-server-plus-plus)
