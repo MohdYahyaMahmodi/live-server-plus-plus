@@ -2,7 +2,7 @@
   "name": "live-server-plus-plus",
   "displayName": "Live Server++",
   "description": "Live development server with real-time reload as you type, CSS hot-reload, and browser console integration",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "publisher": "MohdMahmodi",
   "author": {
     "name": "Mohd Mahmodi",
@@ -44,25 +44,87 @@
     "Debuggers"
   ],
   "activationEvents": [
-    "onCommand:liveServerPlusPlus.start",
-    "onCommand:liveServerPlusPlus.stop",
-    "onLanguage:html"
+    "onView:liveServerPlusPlus"
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "live-server-plus-plus",
+          "title": "Live Server++",
+          "icon": "assets/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "live-server-plus-plus": [
+        {
+          "id": "liveServerPlusPlus",
+          "name": "Control Panel",
+          "icon": "assets/icon.svg",
+          "contextualTitle": "Live Server++"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "liveServerPlusPlus.start",
         "title": "Open with Live Server++",
-        "category": "Live Server++"
+        "category": "Live Server++",
+        "icon": "$(play)"
+      },
+      {
+        "command": "liveServerPlusPlus.startWithPicker",
+        "title": "Start Live Server++ (Choose File)",
+        "category": "Live Server++",
+        "icon": "$(play)"
+      },
+      {
+        "command": "liveServerPlusPlus.openCurrent",
+        "title": "Open Current File with Live Server++",
+        "category": "Live Server++",
+        "icon": "$(file-code)"
       },
       {
         "command": "liveServerPlusPlus.stop",
         "title": "Stop Live Server++",
+        "category": "Live Server++",
+        "icon": "$(debug-stop)"
+      },
+      {
+        "command": "liveServerPlusPlus.refresh",
+        "title": "Refresh",
+        "category": "Live Server++",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "liveServerPlusPlus.openUrl",
+        "title": "Open in Browser",
         "category": "Live Server++"
+      },
+      {
+        "command": "liveServerPlusPlus.removeFile",
+        "title": "Remove from List",
+        "category": "Live Server++",
+        "icon": "$(close)"
       }
     ],
     "menus": {
+      "view/title": [
+        {
+          "command": "liveServerPlusPlus.refresh",
+          "when": "view == liveServerPlusPlus",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "liveServerPlusPlus.removeFile",
+          "when": "view == liveServerPlusPlus && viewItem == openedFile",
+          "group": "inline"
+        }
+      ],
       "explorer/context": [
         {
           "when": "resourceLangId == html",

@@ -452,7 +452,6 @@ export class LiveServer {
         "X-Content-Type-Options": "nosniff",
         "X-Served-From": fromCache ? "memory" : "disk",
       });
-
       res.end(content);
     } catch (error) {
       console.error("Error handling request:", error);
@@ -477,12 +476,18 @@ export class LiveServer {
       <html>
         <head>
           <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <title>${statusCode} - ${title}</title>
           <style>
-            * { margin: 0; padding: 0; box-sizing: border-box; }
+            * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+            }
             body { 
-              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-              background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+              background: #000;
+              color: #fff;
               min-height: 100vh;
               display: flex;
               align-items: center;
@@ -490,35 +495,32 @@ export class LiveServer {
               padding: 20px;
             }
             .container {
-              background: white;
-              border-radius: 10px;
-              padding: 40px;
-              max-width: 500px;
-              box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+              max-width: 600px;
               text-align: center;
             }
             .error-code {
-              font-size: 72px;
-              font-weight: bold;
-              color: #667eea;
-              margin-bottom: 10px;
+              font-size: clamp(64px, 15vw, 120px);
+              font-weight: 700;
+              letter-spacing: -2px;
+              margin-bottom: 20px;
+              opacity: 0.9;
             }
             h1 { 
-              color: #333;
-              margin-bottom: 15px;
-              font-size: 24px;
+              font-size: clamp(24px, 5vw, 36px);
+              font-weight: 600;
+              margin-bottom: 16px;
+              opacity: 0.95;
             }
             p { 
-              color: #666;
+              font-size: clamp(14px, 3vw, 16px);
               line-height: 1.6;
-              margin-bottom: 20px;
+              opacity: 0.7;
+              margin-bottom: 32px;
             }
             .footer {
-              margin-top: 30px;
-              padding-top: 20px;
-              border-top: 1px solid #eee;
-              color: #999;
               font-size: 14px;
+              opacity: 0.5;
+              margin-top: 48px;
             }
           </style>
         </head>
@@ -535,43 +537,24 @@ export class LiveServer {
   }
 
   private send404(res: http.ServerResponse, requestedPath: string): void {
-    // Try to find similar files
-    const suggestions = this.findSimilarFiles(requestedPath);
-
-    let suggestionsHTML = "";
-    if (suggestions.length > 0) {
-      suggestionsHTML = `
-        <div style="margin-top: 20px; text-align: left;">
-          <strong>Did you mean?</strong>
-          <ul style="margin-top: 10px; list-style: none; padding: 0;">
-            ${suggestions
-              .map(
-                (file) => `
-              <li style="margin: 5px 0;">
-                <a href="${file}" style="color: #667eea; text-decoration: none;">
-                  ${file}
-                </a>
-              </li>
-            `
-              )
-              .join("")}
-          </ul>
-        </div>
-      `;
-    }
-
     res.writeHead(404, { "Content-Type": "text/html" });
     res.end(`
       <!DOCTYPE html>
       <html>
         <head>
           <meta charset="UTF-8">
-          <title>404 - Not Found</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>404 - Page Not Found</title>
           <style>
-            * { margin: 0; padding: 0; box-sizing: border-box; }
+            * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+            }
             body { 
-              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-              background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+              background: #000;
+              color: #fff;
               min-height: 100vh;
               display: flex;
               align-items: center;
@@ -579,49 +562,55 @@ export class LiveServer {
               padding: 20px;
             }
             .container {
-              background: white;
-              border-radius: 10px;
-              padding: 40px;
               max-width: 600px;
-              box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+              text-align: center;
             }
             .error-code {
-              font-size: 72px;
-              font-weight: bold;
-              color: #667eea;
-              margin-bottom: 10px;
-              text-align: center;
+              font-size: clamp(64px, 15vw, 120px);
+              font-weight: 700;
+              letter-spacing: -2px;
+              margin-bottom: 20px;
+              opacity: 0.9;
             }
             h1 { 
-              color: #333;
-              margin-bottom: 15px;
-              font-size: 24px;
-              text-align: center;
+              font-size: clamp(24px, 5vw, 36px);
+              font-weight: 600;
+              margin-bottom: 16px;
+              opacity: 0.95;
             }
             .path {
-              background: #f5f5f5;
-              padding: 10px;
-              border-radius: 5px;
-              font-family: monospace;
-              margin: 20px 0;
+              background: #111;
+              padding: 12px 16px;
+              border-radius: 6px;
+              font-family: 'Courier New', monospace;
+              font-size: clamp(12px, 2.5vw, 14px);
+              margin: 24px 0;
               word-break: break-all;
+              opacity: 0.8;
+              border: 1px solid #222;
+            }
+            p { 
+              font-size: clamp(14px, 3vw, 16px);
+              line-height: 1.6;
+              opacity: 0.7;
+              margin-bottom: 24px;
             }
             a {
-              color: #667eea;
+              color: #fff;
               text-decoration: none;
-              transition: color 0.2s;
+              opacity: 0.7;
+              transition: opacity 0.2s;
+              display: inline-block;
+              margin-top: 16px;
+              font-size: clamp(13px, 2.5vw, 14px);
             }
             a:hover {
-              color: #764ba2;
-              text-decoration: underline;
+              opacity: 1;
             }
             .footer {
-              margin-top: 30px;
-              padding-top: 20px;
-              border-top: 1px solid #eee;
-              color: #999;
               font-size: 14px;
-              text-align: center;
+              opacity: 0.5;
+              margin-top: 48px;
             }
           </style>
         </head>
@@ -630,13 +619,8 @@ export class LiveServer {
             <div class="error-code">404</div>
             <h1>Page Not Found</h1>
             <div class="path">${requestedPath}</div>
-            <p style="text-align: center; color: #666;">
-              The requested file could not be found.
-            </p>
-            ${suggestionsHTML}
-            <div class="footer">
-              <a href="/">← Back to Home</a> | Live Server++
-            </div>
+            <p>The requested file does not exist.<br>Please check the directory.</p>
+            <div class="footer">Live Server++</div>
           </div>
         </body>
       </html>

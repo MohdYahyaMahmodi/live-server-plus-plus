@@ -1,96 +1,124 @@
-# Live Server++ 🚀
+# Live Server++ (Version 1.1.0)
 
 [![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/mohdmahmodi.live-server-plus-plus?style=for-the-badge&logo=visual-studio-code&logoColor=white)](https://marketplace.visualstudio.com/items?itemName=mohdmahmodi.live-server-plus-plus)
 [![Downloads](https://img.shields.io/visual-studio-marketplace/d/mohdmahmodi.live-server-plus-plus?style=for-the-badge)](https://marketplace.visualstudio.com/items?itemName=mohdmahmodi.live-server-plus-plus)
 [![Rating](https://img.shields.io/visual-studio-marketplace/r/mohdmahmodi.live-server-plus-plus?style=for-the-badge)](https://marketplace.visualstudio.com/items?itemName=mohdmahmodi.live-server-plus-plus)
 [![License](https://img.shields.io/github/license/MohdYahyaMahmodi/live-server-plus-plus?style=for-the-badge)](LICENSE)
 
-> A blazingly fast live development server with **real-time reload as you type** - no need to save!
-
-Live Server++ is an enhanced development server for VS Code that brings your code to life instantly. Unlike traditional live servers, it reloads your browser **as you type**, giving you immediate visual feedback without pressing save.
+A powerful live development server for VS Code with real-time reload as you type. Unlike traditional live servers that require saving files, **Live Server++** updates your browser instantly as you edit, providing immediate visual feedback.
 
 ---
 
-## ✨ Features
+## 🚀 Features
 
-### 🔥 **Live Reload as You Type**
+### ⚡ Live Reload as You Type
 
-Watch your changes appear in the browser **instantly** - no need to save files! Perfect for rapid prototyping and design tweaking.
+Changes appear in your browser immediately without saving files. Perfect for rapid prototyping and iterative design work.
 
-### 🎨 **CSS Hot Reload**
+### 🎨 CSS Hot Reload
 
-CSS changes update without full page refresh, preserving your application state. No more losing form data or navigation position!
+CSS modifications update instantly without full page refresh, preserving application state and scroll position.
 
-### 📊 **Browser Console Integration**
+### 🧰 Dedicated Control Panel
 
-See browser console logs, warnings, and errors directly in VS Code's output panel. Debug without switching windows.
+A clean sidebar panel provides full control over the server with:
 
-### ⚡ **Smart Caching**
+- Real-time server status and port information
+- File picker to choose which HTML file to serve
+- List of active files with one-click access
+- Quick actions for starting, stopping, and managing files
 
-Serves unsaved file changes from memory for lightning-fast updates while you're actively editing.
+### 🐛 Browser Console Integration
 
-### 🌐 **CORS Enabled**
+Console logs, warnings, and errors from your browser appear directly in VS Code's output panel, eliminating the need to switch windows during debugging.
 
-Built-in CORS support makes API testing seamless during development.
+### 🧠 In-Memory Caching
 
-### 🎯 **Auto Port Detection**
+Unsaved changes are served directly from memory, ensuring the fastest possible reload times during active development.
 
-Automatically finds available ports starting from 3000, incrementing if busy (3001, 3002, etc.).
+### 🌐 CORS Support
 
-### 🔒 **Secure by Default**
+Built-in CORS headers enable seamless API testing during local development.
 
-Directory traversal protection and security headers keep your development environment safe.
+### 🔍 Smart Port Detection
 
-### 📁 **Directory Browsing**
+Automatically finds available ports starting from 3000. If a port is in use, the server will try the next available port.
 
-Beautiful directory listings when no index.html is present, making navigation easy.
+### 🔒 Security Features
+
+- Directory traversal protection
+- Path normalization and validation
+- Secure default headers
+- Request sanitization
+
+### ⚠️ Professional Error Pages
+
+Clean, minimalist error pages with helpful information when files are not found or other issues occur.
 
 ---
 
-## 🚀 Quick Start
-
-### Installation
+## 📦 Installation
 
 1. Open VS Code
-2. Press `Ctrl+P` / `Cmd+P`
+2. Press `Ctrl+P` (Windows/Linux) or `Cmd+P` (Mac)
 3. Type: `ext install mohdmahmodi.live-server-plus-plus`
 4. Press Enter
 
-Or search for **"Live Server++"** in the Extensions marketplace.
+Alternatively, search for **"Live Server++"** in the Extensions marketplace.
 
-### Usage
+---
 
-**Method 1: Right-Click**
+## 🧪 Usage
 
-- Right-click any HTML file in Explorer or editor
+### ▶️ Starting the Server
+
+**Method 1: Sidebar Panel**
+
+1. Click the **Live Server++** icon in the Activity Bar
+2. Click **Start Server**
+3. Select an HTML file from the picker
+
+**Method 2: Right-Click Menu**
+
+- Right-click any HTML file in the Explorer or editor
 - Select **"Open with Live Server++"**
-
-**Method 2: Command Palette**
-
-- Press `Ctrl+Shift+P` / `Cmd+Shift+P`
-- Type: **"Live Server++: Open with Live Server++"**
-- Press Enter
 
 **Method 3: Status Bar**
 
-- Click the **"🗼 Live Server++: 3000"** item in the status bar to stop
+- Click **"Open with Live Server++"** in the status bar
+- When a server is running, click **"Close Live Server++"** to stop
+
+**Method 4: Command Palette**
+
+- Press `Ctrl+Shift+P` (Windows/Linux) or `Cmd+Shift+P` (Mac)
+- Type **"Live Server++: Start"** and press Enter
+
+### 📂 Managing Active Files
+
+The sidebar panel displays all files you've opened with the server. Click any file to reopen it in your browser, or use the close button to remove it from the list.
+
+### 🛑 Stopping the Server
+
+- Click **"Close Live Server++"** in the status bar
+- Click **"Stop Server"** in the sidebar panel
+- Use the Command Palette: **"Live Server++: Stop"**
 
 ---
 
 ## ⚙️ Configuration
 
-Open VS Code settings (`Ctrl+,` / `Cmd+,`) and search for **"Live Server++"**:
+Access settings via `Ctrl+,` (Windows/Linux) or `Cmd+,` (Mac), then search for **"Live Server++"**.
 
-| Setting                              | Default   | Description                                              |
-| ------------------------------------ | --------- | -------------------------------------------------------- |
-| `liveServerPlusPlus.port`            | `3000`    | Default port for the server                              |
-| `liveServerPlusPlus.browser`         | `default` | Browser to open (`default`, `chrome`, `firefox`, `edge`) |
-| `liveServerPlusPlus.autoReloadDelay` | `100`     | Debounce delay in milliseconds for auto-reload           |
-| `liveServerPlusPlus.enableCORS`      | `true`    | Enable CORS headers for API testing                      |
-| `liveServerPlusPlus.showConsoleLog`  | `true`    | Show browser console logs in VS Code                     |
-| `liveServerPlusPlus.verboseLogging`  | `false`   | Show detailed internal logging                           |
+| Setting                              | Default   | Description                                      |
+| ------------------------------------ | --------- | ------------------------------------------------ |
+| `liveServerPlusPlus.port`            | `3000`    | Default server port                              |
+| `liveServerPlusPlus.browser`         | `default` | Browser to open (default, chrome, firefox, edge) |
+| `liveServerPlusPlus.autoReloadDelay` | `100`     | Debounce delay in milliseconds for auto-reload   |
+| `liveServerPlusPlus.enableCORS`      | `true`    | Enable CORS headers for API testing              |
+| `liveServerPlusPlus.showConsoleLog`  | `true`    | Show browser console logs in VS Code output      |
+| `liveServerPlusPlus.verboseLogging`  | `false`   | Enable detailed internal logging                 |
 
-### Example Configuration
+### 🧪 Example Configuration
 
 ```json
 {
@@ -103,104 +131,94 @@ Open VS Code settings (`Ctrl+,` / `Cmd+,`) and search for **"Live Server++"**:
 
 ---
 
-## 📖 How It Works
+## 🧠 How It Works
 
-Live Server++ uses a combination of technologies to deliver instant feedback:
+**Live Server++** monitors your workspace for file changes and maintains a WebSocket connection with the browser. When you type, changes are cached in memory and the browser is notified to reload. CSS changes trigger a targeted stylesheet update without a full page refresh.
 
-1. **File System Monitoring**: Watches workspace files for changes
-2. **In-Memory Caching**: Caches open documents in memory for instant serving
-3. **WebSocket Communication**: Maintains real-time connection with browser
-4. **Smart Debouncing**: Prevents reload spam while typing (configurable delay)
-
-### Live Reload Flow
+**Architecture:**
 
 ```
-You type → Document cached → Debounced trigger → WebSocket message → Browser reloads
+Editor Changes → In-Memory Cache → WebSocket Signal → Browser Update
 ```
 
-### CSS Hot Reload Flow
+For CSS files:
 
 ```
-CSS change → WebSocket message → Stylesheet timestamp update → Instant visual update
+CSS Edit → Cache Update → WebSocket → Stylesheet Refresh (no reload)
 ```
 
 ---
 
-## 🎯 Use Cases
+## 💡 Use Cases
 
-- **Rapid Prototyping**: See design changes instantly
-- **Learning Web Development**: Immediate feedback while learning HTML/CSS/JS
-- **Design Fine-Tuning**: Tweak layouts and styles in real-time
-- **Client Presentations**: Make live adjustments during demos
-- **Teaching**: Show code changes to students in real-time
-
----
-
-## 🆚 Comparison
-
-| Feature                    | Live Server++ | Traditional Live Server |
-| -------------------------- | ------------- | ----------------------- |
-| Reload as you type         | ✅            | ❌ (requires save)      |
-| CSS Hot Reload             | ✅            | ❌                      |
-| Browser Console in VS Code | ✅            | ❌                      |
-| In-Memory Caching          | ✅            | ❌                      |
-| Auto Port Detection        | ✅            | ✅                      |
-| CORS Support               | ✅            | ⚠️ (varies)             |
+- **Web Development:** Instant feedback while building interfaces
+- **Design Work:** Real-time visual adjustments to layouts and styles
+- **Learning:** Immediate results when learning HTML, CSS, and JavaScript
+- **Prototyping:** Rapid iteration on design concepts
+- **Teaching:** Live demonstrations of code changes to students
+- **Client Reviews:** Make adjustments during live presentations
 
 ---
 
-## 🐛 Known Limitations
+## 📊 Comparison with Other Tools
 
-- **File Size**: Files over 50MB are not cached (served from disk)
-- **Cache Limit**: Maximum 100MB total cache, 50 files
-- **Single Workspace**: Works with one workspace at a time
-- **Static Files Only**: Not suitable for server-side rendering or databases
+| Feature                   | Live Server++ | Traditional Live Server |
+| ------------------------- | ------------- | ----------------------- |
+| Reload without saving     | ✅ Yes        | ❌ No                   |
+| CSS hot reload            | ✅ Yes        | ❌ No                   |
+| Browser console in editor | ✅ Yes        | ❌ No                   |
+| In-memory caching         | ✅ Yes        | ❌ No                   |
+| Dedicated control panel   | ✅ Yes        | ❌ No                   |
+| File picker               | ✅ Yes        | ❌ No                   |
+| Active files management   | ✅ Yes        | ❌ No                   |
 
-For dynamic backends, use Node.js/Express instead.
+---
+
+## ⚠️ Known Limitations
+
+- Files larger than **50MB** are served from disk rather than cached
+- Maximum cache size is **100MB across 50 files**
+- Designed for **single workspace** use
+- Best suited for **static HTML/CSS/JS** development
+- Not a replacement for backend servers with databases or SSR
+
+> For applications requiring backend processing, consider using **Node.js with Express** or similar frameworks.
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+Contributions are welcome. Please read `CONTRIBUTING.md` before submitting pull requests.
 
 ### Development Setup
 
 ```bash
-# Clone the repository
 git clone https://github.com/MohdYahyaMahmodi/live-server-plus-plus.git
 cd live-server-plus-plus
-
-# Install dependencies
 npm install
-
-# Compile TypeScript
 npm run compile
-
-# Open in VS Code
 code .
-
-# Press F5 to run in debug mode
 ```
 
----
-
-## 📝 Changelog
-
-See [CHANGELOG.md](CHANGELOG.md) for release history.
+Press `F5` in VS Code to launch the extension in debug mode.
 
 ---
 
-## 📄 License
+## 🪵 Changelog
 
-[MIT License](LICENSE) © 2025 Mohd Mahmodi
+See [CHANGELOG.md](CHANGELOG.md) for version history and release notes.
 
 ---
 
-## 🙏 Acknowledgments
+## 📜 License
 
-- Inspired by the original [Live Server](https://github.com/ritwickdey/vscode-live-server) by Ritwick Dey
-- Built with ❤️ for the web development community
+MIT License - Copyright © 2025 Mohd Mahmodi
+
+---
+
+## 🙌 Acknowledgments
+
+Inspired by the original Live Server extension by **Ritwick Dey**. Built to provide an enhanced development experience with modern features and improved performance.
 
 ---
 
@@ -208,25 +226,27 @@ See [CHANGELOG.md](CHANGELOG.md) for release history.
 
 - [GitHub Repository](https://github.com/MohdYahyaMahmodi/live-server-plus-plus)
 - [Issue Tracker](https://github.com/MohdYahyaMahmodi/live-server-plus-plus/issues)
-- [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=MohdYahyaMahmodi.live-server-plus-plus)
+- [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=mohdmahmodi.live-server-plus-plus)
 
 ---
 
-## 💡 Tips & Tricks
+## 💡 Tips
 
-**Adjust Reload Delay**
+### ⚙️ Adjust Reload Speed
+
+Increase the delay if you type slowly, decrease for faster feedback:
 
 ```json
 "liveServerPlusPlus.autoReloadDelay": 200
 ```
 
-Increase for slower typing, decrease for faster feedback.
+### 🪶 View Browser Console
 
-**View Browser Console**
-Enable console logging and open the Output panel (`Ctrl+Shift+U`) → Select "Live Server++" from dropdown.
+Enable console logging and open the **Output panel** (`Ctrl+Shift+U`), then select **"Live Server++"** from the dropdown.
 
-**Disable Verbose Logging**
-Keep it off for cleaner output:
+### 📉 Reduce Log Verbosity
+
+Keep verbose logging disabled for cleaner output:
 
 ```json
 "liveServerPlusPlus.verboseLogging": false
@@ -234,6 +254,6 @@ Keep it off for cleaner output:
 
 ---
 
-**Made with ❤️ by [Mohd Mahmodi](https://github.com/MohdYahyaMahmodi)**
+## 👤 Created by Mohd Mahmodi
 
-If you find this extension helpful, please ⭐ star the repo and leave a review!
+If this extension is helpful, please ⭐ star the repository and leave a review on the VS Code Marketplace!
